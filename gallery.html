@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+    
+	    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+	    <link rel="stylesheet" href="main.css">
+		<link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<!-- jQuery/jQueryUI (hosted) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.js"></script>
+		<!--<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/sunny/jquery-ui.css" rel="stylesheet" type="text/css"/>-->
+
+		<!-- Markdown parser -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Converter.min.js"></script>
+
+		<!-- Prettyprint -->
+		<link href="https://google-code-prettify.googlecode.com/svn/loader/prettify.css" rel="stylesheet" type="text/css"/>
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+
+		<!-- Index -->
+		<style>
+		
+			#menu {
+				margin-bottom:			0em;
+			}
+
+			#preview {
+				border:					solid thin silver;
+				padding:				4em;
+				margin:					0 10%;
+				text-align:				center;
+				box-shadow:				0 0 2em silver;
+				position:				relative;
+				margin-bottom:			4em;
+			}
+
+			.chapter {
+				-webkit-columns:		460px;
+				   -moz-columns:		460px;
+						columns:		460px;
+
+				-webkit-column-gap:		4em;
+				   -moz-column-gap:		4em;
+						column-gap:		4em;
+
+				-webkit-column-rule:	thin solid silver;
+				   -moz-column-rule:	thin solid silver;
+						column-rule:	thin solid silver;
+
+				text-align:				justify;
+			}
+			
+			.clickable {
+				cursor:				pointer;
+			}
+
+			pre {
+				tab-size:			4;
+				overflow-x:			auto;
+				background-color:	#eee;
+				-webkit-column-break-inside: avoid;
+			}
+		</style>
+		<script>
+			$(function() {
+				function tabsToSpaces(line, tabsize) {
+					var out		= '',
+						tabsize = tabsize || 4,
+						c;
+					for (c in line) {
+						var ch = line.charAt(c);
+						if (ch === '\t') {
+							do {
+								out += ' ';
+							} while (out.length % tabsize);
+						} else {
+							out += ch;
+						}
+					}
+					return out;
+				}
+
+				function visualizeElement(element, type) {
+					var code		= $(element).html().split('\n'),
+						tabsize		= 4,
+						minlength	= 2E53,
+						l;
+
+					// Convert tabs to spaces
+					for (l in code) {
+						code[l] = tabsToSpaces(code[l], tabsize);
+					}
+
+
+					// determine minimum length
+					var minlength = 2E53;
+					var first = 2E53;
+					var last = 0;
+					for (l in code) {
+						if (/\S/.test(code[l])) {
+							minlength = Math.min(minlength, /^\s*/.exec(code[l])[0].length);
+							first = Math.min(first, l);
+							last = Math.max(last, l);
+						}
+					}
+
+					code = code.slice(first, last + 1);
+
+					// strip tabs at start
+					for (l in code) {
+						code[l] = code[l].slice(minlength);
+					}
+
+					// recombine
+					code = code.join('\n');
+
+					var fragment = $('<pre class="prettyprint"><code/></pre>').text(code).insertAfter(element);
+					$('<h3 class="clickable">'+type+'&hellip;</h3>').insertBefore(fragment).click(function() {
+						fragment.slideToggle();
+					});
+				}
+
+				// extract html fragments
+				$('div.prettyprint, span.prettyprint').each(function() {
+					visualizeElement(this, 'HTML');
+				});
+
+				// extract scripts
+				$('script.prettyprint').each(function() {
+					visualizeElement(this, 'Javascript');
+				});
+
+				// Include the readme
+				var markdown = new Markdown.Converter();
+				$.get('README.md', function(readme) {
+					$('#readme').html(markdown.makeHtml(readme));
+					$('#readme h1').each(function() {
+						$(this).nextUntil('h1').wrapAll('<div class="chapter"/>');
+					});
+					$('#readme pre').addClass('prettyprint');
+					prettyPrint();
+
+					// build menu
+					var menuitems = [];
+					$('h1').each(function() {
+						var text	= $(this).text(),
+							id		= $(this).attr('id') || 'chapter '+text;
+						$(this).attr('id', id);
+						menuitems.push('<a href="#'+id+'">'+text+'</a>');
+					});
+					$(menu).html(menuitems.join(' &mdash; '));
+				}, 'html');
+			});
+		</script>
+
+		<!-- Plugin -->
+		<script src="js/jquery.coverflow.js"></script>
+		<!-- Optionals -->
+		<script src="js/jquery.interpolate.js"></script>
+		<script src="js/jquery.mousewheel.js"></script>
+		<script src="js/jquery.touchSwipe.min.js"></script>
+		<script src="js/reflection.js"></script>
+    </head>
+    <body>
+	<div class="row">
+      <div class="container">
+        <h1 class="header"><a href="index.html">Millie Yang <span>Photography</span></a></h1>
+      </div>
+    </div> 
+
+	<div class="row">
+		<div id="menu"></div>
+
+		<div id="preview">
+			<div id="preview-coverflow">
+				<img class="cover" src="https://farm8.staticflickr.com/7589/16636109383_a3c8d06f47_o.jpg"/>
+				<img class="cover" src="https://farm8.staticflickr.com/7595/17070100579_03c1d6d019_o.jpg"/>
+				<img class="cover" src="https://farm9.staticflickr.com/8767/17070100599_604a3a4d36_o.jpg"/>
+				<img class="cover" src="https://farm8.staticflickr.com/7634/17048900017_2b5eb4d0c5_o.jpg"/>
+				<img class="cover" src="https://farm9.staticflickr.com/8800/16633851394_f3991a136e_o.jpg"/>
+				<img class="cover" src="https://farm8.staticflickr.com/7722/17048900077_37c9d6fd13_o.jpg"/>
+				<img class="cover" src="https://farm9.staticflickr.com/8742/16633851554_b1b8f5a45f_o.jpg"/>
+				<img class="cover" src="https://farm8.staticflickr.com/7719/17255768111_eb0b8f39d2_o.jpg"/>
+				<img class="cover" src="https://farm9.staticflickr.com/8695/16636109653_ffe4e96d20_o.jpg"/>
+				<img class="cover" src="https://farm9.staticflickr.com/8746/16636109693_dc628df279_o.jpg"/>
+			</div>
+			<style>
+				#preview {
+					padding-bottom: 10%;
+				}
+				#preview-coverflow .cover {
+					cursor:		pointer;
+					width:		750px;
+					height:		333px;
+					box-shadow:	0 0 4em 1em white;
+				}
+			</style>
+			<script>
+				$(function() {
+					if ($.fn.reflect) {
+						$('#preview-coverflow .cover').reflect();	// only possible in very specific situations
+					}
+
+					$('#preview-coverflow').coverflow({
+						index:			6,
+						density:		2,
+						innerOffset:	50,
+						innerScale:		.7,
+						animateStep:	function(event, cover, offset, isVisible, isMiddle, sin, cos) {
+							if (isVisible) {
+								if (isMiddle) {
+									$(cover).css({
+										'filter':			'none',
+										'-webkit-filter':	'none'
+									});
+								} else {
+									var brightness	= 1 + Math.abs(sin),
+										contrast	= 1 - Math.abs(sin),
+										filter		= 'contrast('+contrast+') brightness('+brightness+')';
+									$(cover).css({
+										'filter':			filter,
+										'-webkit-filter':	filter
+									});
+								}
+							}
+						}
+					});
+				});
+			</script>
+		</div>
+
+		<footer class="footer botbar">
+		<div class="nav">
+			<div class="container">
+				<ul class="pull-left" id="nav-list"> 
+					<li><a href="index.html">Home</a></li>
+					<li><a href="contact.html">Contact</a></li>
+					<li><a href="gallery.html">Gallery</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	</body>
+</html>
