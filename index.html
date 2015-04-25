@@ -3,7 +3,7 @@
   <head>
     <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
 	<link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     
@@ -13,7 +13,71 @@
     <!-- jssor.slider.mini.js = (jssor.js + jssor.slider.js) -->
     <script type="text/javascript" src="js/jssor.js"></script>
     <script type="text/javascript" src="js/jssor.slider.js"></script>
-	
+	<script>
+        jQuery(document).ready(function ($) {		
+            var options = {
+				$AutoPlay: true,                 
+                $DragOrientation: 0,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+                $ArrowNavigatorOptions: {                       //[Optional] Options to specify and enable arrow navigator or not
+                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 2,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
+                }
+            };
+            jssor_slider1 = new $JssorSlider$("slider1_container", options);
+			//responsive code begin
+			//you can remove responsive code if you don't want the slider scales
+			//while window resizes
+			function ScaleSlider() {
+				var parentWidth = $('#slider1_container').parent().width();
+				if (parentWidth) {
+					jssor_slider1.$ScaleWidth(parentWidth);
+				}
+				else
+					window.setTimeout(ScaleSlider, 30);
+			}
+			//Scale slider after document ready
+			ScaleSlider();
+											
+			//Scale slider while window load/resize/orientationchange.
+			$(window).bind("load", ScaleSlider);
+			$(window).bind("resize", ScaleSlider);
+			$(window).bind("orientationchange", ScaleSlider);
+			//responsive code end
+		});
+$(window).bind("load", function() { 
+       
+       var footerHeight = 0,
+           footerTop = 0,
+           $footer = $("#footer");
+           
+       positionFooter();
+       
+       function positionFooter() {
+       
+                footerHeight = $footer.height();
+                footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
+       
+               if ( ($(document.body).height()+footerHeight) < $(window).height()) {
+                   $footer.css({
+                        position: "absolute"
+                   }).animate({
+                        top: footerTop
+                   })
+               } else {
+                   $footer.css({
+                        position: "static"
+                   })
+               }
+               
+       }
+       $(window)
+               .scroll(positionFooter)
+               .resize(positionFooter)
+               
+});
+    </script>
   </head>
 
  <body>
@@ -30,27 +94,15 @@
 			<div id="slider1_container" style="position: relative; top: 0px; right:0px; left: 0px; height:50%; width: 100%;">
 
 				<!-- Slides Container -->
-				<div class="image-container">
-					<!--<div><img src="https://farm8.staticflickr.com/7678/17224653141_4e9d6033aa_h.jpg" /></div>
-					<div><img src="https://farm9.staticflickr.com/8694/17224653361_514071c48d_h.jpg" /></div>-->
-					<div>
-						<img class="img-responsive" src="https://farm9.staticflickr.com/8703/16626874964_9b6fb58ee2_o.jpg">
-					</div>
-					<div>
-						<img class="img-responsive" src="https://farm9.staticflickr.com/8816/17063123329_1f791c17da_o.jpg">
-					</div>
-					<div>
-						<img class="img-responsive" src="https://farm8.staticflickr.com/7591/17041913507_6451ed3c13_o.jpg" />
-					</div>
-					<div>
-						<img class="img-responsive" src="https://farm8.staticflickr.com/7615/16629137353_69281118f1_o.jpg" />
-					</div>
-					<div>
-						<img class="img-responsive" src="https://farm8.staticflickr.com/7621/17063123119_858f6fbacc_o.jpg" />
-					</div>
-					<div>
-						<img class="img-responsive" src ="https://farm9.staticflickr.com/8737/16629137223_ddc9918bd9_o.jpg"/> 
-					</div>
+				<div u="slides" style="cursor: move; left: 0px; top: 0px; right:0px; width:1280px; height:620px; position:relative;overflow: hidden; ">
+					<!--<div><img u="image" src="https://farm8.staticflickr.com/7678/17224653141_4e9d6033aa_h.jpg" /></div>
+					<div><img u="image" src="https://farm9.staticflickr.com/8694/17224653361_514071c48d_h.jpg" /></div>-->
+					<div><img u="image" src="https://farm9.staticflickr.com/8703/16626874964_9b6fb58ee2_o.jpg" /></div>
+					<div><img u="image" src="https://farm9.staticflickr.com/8816/17063123329_1f791c17da_o.jpg" /></div>
+					<div><img u="image" src="https://farm8.staticflickr.com/7591/17041913507_6451ed3c13_o.jpg" /></div>
+					<div><img u="image" src="https://farm8.staticflickr.com/7615/16629137353_69281118f1_o.jpg" /></div>
+					<div><img u="image" src="https://farm8.staticflickr.com/7621/17063123119_858f6fbacc_o.jpg" /></div>
+					<div><img u="image" src ="https://farm9.staticflickr.com/8737/16629137223_ddc9918bd9_o.jpg"/> </div>
 					
 				</div>
 				
@@ -90,10 +142,10 @@
 					.jssora03r.jssora03rdn { background-position: -303px -33px; }
 				</style>
 				<!-- Arrow Left -->
-				<span ft" class="jssora03l" style="top: 123px; left: 8px;">
+				<span u="arrowleft" class="jssora03l" style="top: 123px; left: 8px;">
 				</span>
 				<!-- Arrow Right -->
-				<span ght" class="jssora03r" style="top: 123px; right: 8px;">
+				<span u="arrowright" class="jssora03r" style="top: 123px; right: 8px;">
 				</span>
 				<!--#endregion Arrow Navigator Skin End -->
 				<a style="display: none" href="http://www.jssor.com">js slider</a>
@@ -111,78 +163,6 @@
 		</ul>
 	  </div>
 	</nav>
-
-
-
-	<script>
-        jQuery(document).ready(function ($) {		
-            var options = {
-				$AutoPlay: true,                 
-                $DragOrientation: 0,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
-                $ArrowNavigatorOptions: {                       //[Optional] Options to specify and enable arrow navigator or not
-                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
-                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-                    $AutoCenter: 2,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
-                    $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
-                }
-            };
-            jssor_slider1 = new $JssorSlider$("slider1_container", options);
-
-
-			//responsive code begin
-			//you can remove responsive code if you don't want the slider scales
-			//while window resizes
-			function ScaleSlider() {
-				var parentWidth = $('#slider1_container').parent().width();
-				if (parentWidth) {
-					jssor_slider1.$ScaleWidth(parentWidth);
-				}
-				else
-					window.setTimeout(ScaleSlider, 30);
-			}
-			//Scale slider after document ready
-			ScaleSlider();
-											
-			//Scale slider while window load/resize/orientationchange.
-			$(window).bind("load", ScaleSlider);
-			$(window).bind("resize", ScaleSlider);
-			$(window).bind("orientationchange", ScaleSlider);
-			//responsive code end
-
-		});
-$(window).bind("load", function() { 
-       
-       var footerHeight = 0,
-           footerTop = 0,
-           $footer = $("#footer");
-           
-       positionFooter();
-       
-       function positionFooter() {
-       
-                footerHeight = $footer.height();
-                footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
-       
-               if ( ($(document.body).height()+footerHeight) < $(window).height()) {
-                   $footer.css({
-                        position: "absolute"
-                   }).animate({
-                        top: footerTop
-                   })
-               } else {
-                   $footer.css({
-                        position: "static"
-                   })
-               }
-               
-       }
-
-       $(window)
-               .scroll(positionFooter)
-               .resize(positionFooter)
-               
-});
-    </script>
 
   </body>
 </html>
