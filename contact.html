@@ -4,21 +4,11 @@
     <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
     
     <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
-	<script>
-		jQuery(document).ready(function ($) {	
-			$.backstretch("columbia3.jpg");
-		});
-    </script>
-	<style>
-	body {
-		overflow-y: hidden;
-	}
-	</style>
   </head>
 
   <body>
@@ -44,18 +34,25 @@
       </div>
     </div> 
 	
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+	  <div class="container">
+	    <ul class="pull-left nav nav-pills" id="nav-list"> 
+			<li><a href="index.html">Home</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="gallery.html">Gallery</a></li>
+		</ul>
+	  </div>
+	</nav>
 	
-	<footer class="footer botbar">
-		<div class="nav">
-			<div class="container">
-				<ul class="pull-left" id="nav-list"> 
-					<li><a href="index.html">Home</a></li>
-					<li><a href="contact.html">Contact</a></li>
-					<li><a href="gallery.html">Gallery</a></li>
-				</ul>
-			</div>
-		</div>
-	</footer>
-	
-  </body>
+	<script>
+		jQuery(document).ready(function ($) {	
+			$.backstretch("columbia3.jpg");
+		});
+    </script>
+	<style>
+	body {
+		overflow-y: hidden;
+	}
+	</style>
+ 	</body>
 </html>

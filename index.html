@@ -3,7 +3,7 @@
   <head>
     <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
 	<link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     
@@ -13,6 +13,107 @@
     <!-- jssor.slider.mini.js = (jssor.js + jssor.slider.js) -->
     <script type="text/javascript" src="js/jssor.js"></script>
     <script type="text/javascript" src="js/jssor.slider.js"></script>
+	
+  </head>
+
+ <body>
+    <div class="row topbar">
+      <div class="container">
+        <h1 class="header"><a href="index.html">Millie Yang <span>Photography</span></a></h1>
+      </div>
+    </div> 
+
+	<div class="row">
+		<!--<div class="container">-->
+			<!-- Jssor Slider Begin -->
+			<!-- To move inline styles to css file/block, please specify a class name for each element. --> 
+			<div id="slider1_container" style="position: relative; top: 0px; right:0px; left: 0px; height:50%; width: 100%;">
+
+				<!-- Slides Container -->
+				<div class="image-container">
+					<!--<div><img src="https://farm8.staticflickr.com/7678/17224653141_4e9d6033aa_h.jpg" /></div>
+					<div><img src="https://farm9.staticflickr.com/8694/17224653361_514071c48d_h.jpg" /></div>-->
+					<div>
+						<img class="img-responsive" src="https://farm9.staticflickr.com/8703/16626874964_9b6fb58ee2_o.jpg">
+					</div>
+					<div>
+						<img class="img-responsive" src="https://farm9.staticflickr.com/8816/17063123329_1f791c17da_o.jpg">
+					</div>
+					<div>
+						<img class="img-responsive" src="https://farm8.staticflickr.com/7591/17041913507_6451ed3c13_o.jpg" />
+					</div>
+					<div>
+						<img class="img-responsive" src="https://farm8.staticflickr.com/7615/16629137353_69281118f1_o.jpg" />
+					</div>
+					<div>
+						<img class="img-responsive" src="https://farm8.staticflickr.com/7621/17063123119_858f6fbacc_o.jpg" />
+					</div>
+					<div>
+						<img class="img-responsive" src ="https://farm9.staticflickr.com/8737/16629137223_ddc9918bd9_o.jpg"/> 
+					</div>
+					
+				</div>
+				
+				<!--#region Arrow Navigator Skin Begin -->
+				<!-- Help: http://www.jssor.com/development/slider-with-arrow-navigator-jquery.html -->
+				<style>
+					/* jssor slider arrow navigator skin 03 css */
+					/*
+					.jssora03l                  (normal)
+					.jssora03r                  (normal)
+					.jssora03l:hover            (normal mouseover)
+					.jssora03r:hover            (normal mouseover)
+					.jssora03l.jssora03ldn      (mousedown)
+					.jssora03r.jssora03rdn      (mousedown)
+					*/
+					.jssora03l, .jssora03r {
+						display: block;
+						position: absolute;
+						/* size of arrow element */
+						width: 50px;
+						height: 70px;
+						cursor: pointer;
+						background: url(a09.png) no-repeat;
+						overflow: hidden;
+					}
+					.jssora03r {
+						right:35px !important; 
+					}
+					.jssora03l {
+						left:35px !important;
+					}
+					.jssora03l { background-position: -3px -33px; }
+					.jssora03r { background-position: -63px -33px; }
+					.jssora03l:hover { background-position: -123px -33px; }
+					.jssora03r:hover { background-position: -183px -33px; }
+					.jssora03l.jssora03ldn { background-position: -243px -33px; }
+					.jssora03r.jssora03rdn { background-position: -303px -33px; }
+				</style>
+				<!-- Arrow Left -->
+				<span ft" class="jssora03l" style="top: 123px; left: 8px;">
+				</span>
+				<!-- Arrow Right -->
+				<span ght" class="jssora03r" style="top: 123px; right: 8px;">
+				</span>
+				<!--#endregion Arrow Navigator Skin End -->
+				<a style="display: none" href="http://www.jssor.com">js slider</a>
+			</div>
+			<!-- Jssor Slider End -->
+		<!--</div>-->
+	</div>	
+	
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+	  <div class="container">
+	    <ul class="pull-left nav nav-pills" id="nav-list"> 
+			<li><a href="index.html">Home</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="gallery.html">Gallery</a></li>
+		</ul>
+	  </div>
+	</nav>
+
+
+
 	<script>
         jQuery(document).ready(function ($) {		
             var options = {
@@ -82,98 +183,6 @@ $(window).bind("load", function() {
                
 });
     </script>
-  </head>
-
- <body>
-    <div class="row topbar">
-      <div class="container">
-        <h1 class="header"><a href="index.html">Millie Yang <span>Photography</span></a></h1>
-      </div>
-    </div> 
-
-	<div class="row">
-		<!--<div class="container">-->
-			<!-- Jssor Slider Begin -->
-			<!-- To move inline styles to css file/block, please specify a class name for each element. --> 
-			<div id="slider1_container" style="position: relative; top: 0px; right:0px; left: 0px; height:50%; width: 100%;">
-
-				<!-- Slides Container -->
-				<div u="slides" style="cursor: move; left: 0px; top: 0px; right:0px; width:1280px; height:620px; position:relative;overflow: hidden; ">
-					<!--<div><img u="image" src="https://farm8.staticflickr.com/7678/17224653141_4e9d6033aa_h.jpg" /></div>
-					<div><img u="image" src="https://farm9.staticflickr.com/8694/17224653361_514071c48d_h.jpg" /></div>-->
-					<div><img u="image" src="https://farm9.staticflickr.com/8703/16626874964_9b6fb58ee2_o.jpg" /></div>
-					<div><img u="image" src="https://farm9.staticflickr.com/8816/17063123329_1f791c17da_o.jpg" /></div>
-					<div><img u="image" src="https://farm8.staticflickr.com/7591/17041913507_6451ed3c13_o.jpg" /></div>
-					<div><img u="image" src="https://farm8.staticflickr.com/7615/16629137353_69281118f1_o.jpg" /></div>
-					<div><img u="image" src="https://farm8.staticflickr.com/7621/17063123119_858f6fbacc_o.jpg" /></div>
-					<div><img u="image" src ="https://farm9.staticflickr.com/8737/16629137223_ddc9918bd9_o.jpg"/> </div>
-					
-				</div>
-				
-				<!--#region Arrow Navigator Skin Begin -->
-				<!-- Help: http://www.jssor.com/development/slider-with-arrow-navigator-jquery.html -->
-				<style>
-					/* jssor slider arrow navigator skin 03 css */
-					/*
-					.jssora03l                  (normal)
-					.jssora03r                  (normal)
-					.jssora03l:hover            (normal mouseover)
-					.jssora03r:hover            (normal mouseover)
-					.jssora03l.jssora03ldn      (mousedown)
-					.jssora03r.jssora03rdn      (mousedown)
-					*/
-					.jssora03l, .jssora03r {
-						display: block;
-						position: absolute;
-						/* size of arrow element */
-						width: 50px;
-						height: 70px;
-						cursor: pointer;
-						background: url(a09.png) no-repeat;
-						overflow: hidden;
-					}
-					.jssora03r {
-						right:35px !important; 
-					}
-					.jssora03l {
-						left:35px !important;
-					}
-					.jssora03l { background-position: -3px -33px; }
-					.jssora03r { background-position: -63px -33px; }
-					.jssora03l:hover { background-position: -123px -33px; }
-					.jssora03r:hover { background-position: -183px -33px; }
-					.jssora03l.jssora03ldn { background-position: -243px -33px; }
-					.jssora03r.jssora03rdn { background-position: -303px -33px; }
-				</style>
-				<!-- Arrow Left -->
-				<span u="arrowleft" class="jssora03l" style="top: 123px; left: 8px;">
-				</span>
-				<!-- Arrow Right -->
-				<span u="arrowright" class="jssora03r" style="top: 123px; right: 8px;">
-				</span>
-				<!--#endregion Arrow Navigator Skin End -->
-				<a style="display: none" href="http://www.jssor.com">js slider</a>
-			</div>
-			<!-- Jssor Slider End -->
-		<!--</div>-->
-	</div>	
-	<footer class="footer botbar">
-	<div data-role="footer" data-position="fixed">
-	<div class="nav">
-		<div class="container">
-			<ul class="pull-left" id="nav-list"> 
-				<li><a href="index.html">Home</a></li>
-				<li><a href="contact.html">Contact</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
-</footer>
-
-
-
-
 
   </body>
 </html>
