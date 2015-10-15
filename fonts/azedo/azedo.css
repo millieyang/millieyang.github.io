@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Azedo';
+  	font-weight: 700;
+    src: url('azedo-bold.eot');
+    src: url('azedo-bold.eot') format('embedded-opentype'),
+         url('azedo-bold.woff') format('woff'),
+         url('azedo-bold.ttf') format('truetype'),
+         url('azedo-bold.svg#AzedoBold') format('svg');
+}
+
+@font-face {
+    font-family: 'Azedo';
+  	font-weight: 300;
+    src: url('azedo-light.eot');
+    src: url('azedo-light.eot') format('embedded-opentype'),
+         url('azedo-light.woff') format('woff'),
+         url('azedo-light.ttf') format('truetype'),
+         url('azedo-light.svg#AzedoLight') format('svg');
+}
